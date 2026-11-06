@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; media-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; worker-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="A wave equation rendered with raking light and fixed grain. Explore the solver and eight stages of the visual, with source code.">
+  <meta name="theme-color" content="#090909">
+  <title>One slit — wave equation study</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <div><h1>One slit</h1><p class="eyebrow">Wave equation / visual study</p></div>
+      <a class="control" href="https://github.com/cnzn0/one-slit" rel="noreferrer">Source ↗</a>
+    </header>
+    <nav class="view-nav" aria-label="View">
+      <a class="control" href="#final" id="final-link" aria-current="page">Final render</a>
+      <a class="control" href="#1" id="breakdown-link">Breakdown / 8 stages</a>
+      <span class="spec">750 × 250 / 24 FPS / 5 S</span>
+    </nav>
+    <nav class="stages" id="stages" aria-label="Breakdown stages" hidden>
+      <a href="#1"><span>01</span>Grid + state</a>
+      <a href="#2"><span>02</span>Source pulses</a>
+      <a href="#3"><span>03</span>Wall + diffraction</a>
+      <a href="#4"><span>04</span>Display gain</a>
+      <a href="#5"><span>05</span>Raking light</a>
+      <a href="#6"><span>06</span>Cast shadows</a>
+      <a href="#7"><span>07</span>Fixed grain</a>
+      <a href="#8"><span>08</span>Complete</a>
+    </nav>
+    <section class="viewer" aria-label="Wave visualization" aria-busy="true">
+      <img id="poster" src="./assets/poster.png" width="1500" height="500" alt="Overlapping white wave crests pass through a narrow opening and spread into arcs on a dark surface.">
+      <canvas id="hero" width="1500" height="500" role="img" aria-label="Animated wave field, shaded with raking light and fixed grain" hidden></canvas>
+      <canvas id="breakdown" width="1600" height="900" role="img" aria-label="Technical breakdown stage; equation and explanation follow below" hidden></canvas>
+    </section>
+    <p id="status" role="status">Preparing the wave field…</p>
+    <noscript><p>This demo needs JavaScript. The still above shows the final render; source and written notes are available on GitHub.</p></noscript>
+    <div class="transport" role="group" aria-label="Playback">
+      <button class="control" id="play" disabled>Play</button>
+      <label class="visually-hidden" for="frame">Animation frame</label>
+      <input id="frame" type="range" min="0" max="119" value="0" step="1" disabled>
+      <output id="position" for="frame">000 / 119</output>
+    </div>
+    <section class="explanation" aria-labelledby="stage-title">
+      <div class="stage-heading"><h2 id="stage-title">The complete render</h2><span id="stage-count">FINAL</span></div>
+      <p class="equation" id="equation">uₜₜ = c²∇²u</p>
+      <p id="description">A numerical wave field passes through a six-cell aperture. The height gradient drives raking light, cast shadows and a fixed grain threshold.</p>
+    </section>
+    <footer><span>By <a href="https://github.com/cnzn0" rel="noreferrer">cnzn0</a></span><a href="https://github.com/cnzn0/one-slit#readme" rel="noreferrer">Read the code / MIT</a></footer>
+  </main>
+</body>
+</html>
